@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Kentucky | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+    <nav>
+        <h2 class="logo">Kentucky<span>.</span></h2>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle">☰</div>
+    </nav>
+</header>
+
+<!-- Canvas background (full screen) -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- Hero (content must sit above canvas) -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1 class="fade-in">Hello, I'm <span>Kentucky</span></h1>
+        <h2 class="typing"></h2>
+        <p class="fade-in delay">GFX Designer | Bot Developer | Creator</p>
+        <a href="#projects" class="btn fade-in delay2">View My Work</a>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+        I'm a passionate developer who builds websites, Discord bots, and creative digital experiences.
+        I specialize in JavaScript, HTML, CSS, and backend development.
+    </p>
+</section>
+
+<section id="projects" class="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>Discord ERLC Bot</h3>
+            <p>Full-featured bot with sessions, tickets, moderation & logs.</p>
+            <button onclick="alert('Add GitHub link here')">View</button>
+        </div>
+
+        <div class="project-card">
+            <h3>Roleplay Community Website</h3>
+            <p>Custom roleplay server website with applications & staff dashboard.</p>
+            <button onclick="alert('Add GitHub link here')">View</button>
+        </div>
+
+        <div class="project-card">
+            <h3>Roblox Branding Designs</h3>
+            <p>YouTube banners, profile logos & custom thumbnails.</p>
+            <button onclick="alert('Add portfolio link here')">View</button>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Kentucky | All Rights Reserved</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
