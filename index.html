@@ -1,83 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Kentucky | Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kentucky | GFX & Bot Dev</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> </head>
 <body>
-<header>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <h2 class="loader-text">INITIALIZING SYSTEM...</h2>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
     <nav>
-        <h2 class="logo">Kentucky<span>.</span></h2>
+        <div class="logo">KENTUCKY</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#reviews">Reviews</a></li>
         </ul>
-        <div class="menu-toggle">☰</div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
-</header>
 
-<!-- Canvas background (full screen) -->
-<canvas id="bgCanvas"></canvas>
-
-<!-- Hero (content must sit above canvas) -->
-<section id="home" class="hero">
-    <div class="hero-content">
-        <h1 class="fade-in">Hello, I'm <span>Kentucky</span></h1>
-        <h2 class="typing"></h2>
-        <p class="fade-in delay">GFX Designer | Bot Developer | Creator</p>
-        <a href="#projects" class="btn fade-in delay2">View My Work</a>
-    </div>
-</section>
-
-<section id="about" class="about">
-    <h2>About Me</h2>
-    <p>
-        I'm a passionate developer who builds websites, Discord bots, and creative digital experiences.
-        I specialize in JavaScript, HTML, CSS, and backend development.
-    </p>
-</section>
-
-<section id="projects" class="projects">
-    <h2>My Projects</h2>
-    <div class="project-grid">
-        <div class="project-card">
-            <h3>Discord ERLC Bot</h3>
-            <p>Full-featured bot with sessions, tickets, moderation & logs.</p>
-            <button onclick="alert('Add GitHub link here')">View</button>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="KENTUCKY">KENTUCKY</h1>
+            <h3 class="typewriter">GFX BOT DEVELOPER</h3>
+            <p>Crafting high-end visuals and robust automation for the Roblox platform.</p>
+            <a href="#services" class="cta-btn">View Rates</a>
         </div>
+    </section>
 
-        <div class="project-card">
-            <h3>Roleplay Community Website</h3>
-            <p>Custom roleplay server website with applications & staff dashboard.</p>
-            <button onclick="alert('Add GitHub link here')">View</button>
+    <section id="services" class="section-pad">
+        <h2 class="section-title">Services & Pricing</h2>
+        <div class="card-container">
+            <div class="card">
+                <div class="icon">🤖</div>
+                <h3>Custom Discord Bots</h3>
+                <p>Advanced moderation, economy systems, and Roblox API integration.</p>
+                <div class="price">From 1,000 R$</div>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>GFX Thumbnails</h3>
+                <p>High-resolution, rendered thumbnails with custom lighting and effects.</p>
+                <div class="price">From 500 R$</div>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>UI/UX Design</h3>
+                <p>Clean, modern interface design for Roblox games (Scripting optional).</p>
+                <div class="price">Negotiable</div>
+                <button class="order-btn">Order Now</button>
+            </div>
         </div>
+    </section>
 
-        <div class="project-card">
-            <h3>Roblox Branding Designs</h3>
-            <p>YouTube banners, profile logos & custom thumbnails.</p>
-            <button onclick="alert('Add portfolio link here')">View</button>
+    <section id="projects" class="section-pad">
+        <h2 class="section-title">Selected Works</h2>
+        <div class="gallery">
+            <div class="project-item">
+                <img src="https://via.placeholder.com/600x400/1a1a1a/7289da?text=Bot+Dashboard" alt="Project 1">
+                <div class="overlay">
+                    <h3>Moderation Bot</h3>
+                    <p>Python / Discord.py</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="https://via.placeholder.com/600x400/1a1a1a/7289da?text=RPG+Game+Thumbnail" alt="Project 2">
+                <div class="overlay">
+                    <h3>RPG Thumbnail</h3>
+                    <p>Blender / Photoshop</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="https://via.placeholder.com/600x400/1a1a1a/7289da?text=Simulator+UI" alt="Project 3">
+                <div class="overlay">
+                    <h3>Simulator UI</h3>
+                    <p>Roblox Studio</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="https://via.placeholder.com/600x400/1a1a1a/7289da?text=Clan+Logo" alt="Project 4">
+                <div class="overlay">
+                    <h3>Clan Logo</h3>
+                    <p>Vector Art</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <form id="contactForm">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+    <section id="reviews" class="section-pad">
+        <h2 class="section-title">Client Reviews</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Kentucky is the best dev I've worked with. The bot has 0 downtime and the GFX is fire."</p>
+                <div class="user">- xGamerTag_123</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Super fast delivery and flexible with Robux payment. Highly recommended!"</p>
+                <div class="user">- StudioOwner99</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"The UI designs completely changed the look of our game. Worth every Robux."</p>
+                <div class="user">- LeadDev_Roblox</div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <p>© 2026 Kentucky | All Rights Reserved</p>
-</footer>
+    <footer>
+        <p>&copy; 2024 Kentucky. All Rights Reserved.</p>
+        <div class="socials">
+            <a href="#">Discord</a>
+            <a href="#">Twitter</a>
+            <a href="#">Roblox</a>
+        </div>
+    </footer>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
