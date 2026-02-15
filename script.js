@@ -1,160 +1,166 @@
-
-// Wait for window to load to remove loading screen
-window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    setTimeout(() => {
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
-    }, 1500); // Simulated delay for effect
-});
-
-// Canvas Particle System
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-
-let particlesArray;
-
-// Resize Canvas
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    init();
-});
-
-// Mouse interaction
-const mouse = {
-    x: null,
-    y: null,
-    radius: 150 // Connection radius
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-window.addEventListener('mousemove', (event) => {
-    mouse.x = event.x;
-    mouse.y = event.y;
-});
-
-// Particle Class
-class Particle {
-    constructor(x, y, directionX, directionY, size, color) {
-        this.x = x;
-        this.y = y;
-        this.directionX = directionX;
-        this.directionY = directionY;
-        this.size = size;
-        this.color = color;
-    }
-
-    // Method to draw individual particle
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-    }
-
-    // Check particle position, check mouse position, move the particle, draw the particle
-    update() {
-        // Check if particle is still within canvas
-        if (this.x > canvas.width || this.x < 0) {
-            this.directionX = -this.directionX;
-        }
-        if (this.y > canvas.height || this.y < 0) {
-            this.directionY = -this.directionY;
-        }
-
-        // Check collision detection - mouse position / particle position
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx*dx + dy*dy);
-        
-        // Interaction: particles move away from mouse slightly
-        if (distance < mouse.radius + this.size){
-            if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                this.x += 3;
-            }
-            if (mouse.x > this.x && this.x > this.size * 10) {
-                this.x -= 3;
-            }
-            if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                this.y += 3;
-            }
-            if (mouse.y > this.y && this.y > this.size * 10) {
-                this.y -= 3;
-            }
-        }
-        
-        // Move particle
-        this.x += this.directionX;
-        this.y += this.directionY;
-        
-        this.draw();
-    }
+body {
+    background: #0f0f0f;
+    color: white;
+    line-height: 1.6;
 }
 
-// Create particle array
-function init() {
-    particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 9000; // Density
-    for (let i = 0; i < numberOfParticles; i++) {
-        let size = (Math.random() * 2) + 1;
-        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-        let directionX = (Math.random() * 0.4) - 0.2; // Speed
-        let directionY = (Math.random() * 0.4) - 0.2;
-        let color = '#5865F2'; // Particle color
-
-        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-    }
+header {
+    background: #111;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
-// Animation Loop
-function animate() {
-    requestAnimationFrame(animate);
-    ctx.clearRect(0,0,innerWidth, innerHeight);
-
-    for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-    }
-    connect();
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 10%;
 }
 
-// Draw lines between particles
-function connect() {
-    let opacityValue = 1;
-    for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
-            let distance = (( particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-            + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-            
-            if (distance < (canvas.width/7) * (canvas.height/7)) {
-                opacityValue = 1 - (distance/20000);
-                ctx.strokeStyle = 'rgba(88, 101, 242,' + opacityValue + ')';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                ctx.stroke();
-            }
-        }
-    }
+.logo span {
+    color: #00bfff;
 }
 
-init();
-animate();
+.nav-links {
+    display: flex;
+    list-style: none;
+}
 
-// Simple Scroll Reveal Animation
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        }
-    });
-});
+.nav-links li {
+    margin-left: 20px;
+}
 
-const hiddenElements = document.querySelectorAll('.card, .section-title, .project-item');
-hiddenElements.forEach((el) => observer.observe(el));
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00bfff;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+}
+
+.hero h1 span {
+    color: #00bfff;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: #00bfff;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+}
+
+section {
+    padding: 80px 10%;
+}
+
+.projects {
+    background: #141414;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: #00bfff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+}
+
+.contact input,
+.contact textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.contact button {
+    padding: 10px;
+    border: none;
+    background: #00bfff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 10%;
+        width: 200px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
